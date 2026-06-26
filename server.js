@@ -5,7 +5,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const GROQ_KEY = "PUT_NEW_KEY_HERE";
+const GROQ_KEY = process.env.GROQ_KEY
 
 app.post("/ai", async (req, res) => {
 	const { personality, input, memory } = req.body;
