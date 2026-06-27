@@ -25,8 +25,14 @@ app.post("/ai", async (req, res) => {
 		})
 	});
 
-	const data = await response.json();
-	res.json({ answer: data?.choices?.[0]?.message?.content || "..." });
+const data = await response.json();
+
+console.log("Groq response:");
+console.log(JSON.stringify(data, null, 2));
+
+res.json({
+    answer: data?.choices?.[0]?.message?.content || "...",
+});
 });
 
 app.listen(process.env.PORT || 3000);
